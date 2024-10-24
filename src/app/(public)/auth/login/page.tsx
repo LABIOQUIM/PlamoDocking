@@ -7,7 +7,6 @@ import Button from "@/components/basics/Button/Button";
 import { useRouter } from 'next/navigation';
 import Alert from "@/components/plasmodocking/Alerts/Alert";
 import { useTranslations } from 'next-intl';
-import { useLocale } from 'next-intl';
 import { useAuthStore } from "@/store/auth-store";
 import { authenticateUser } from "@/api/auth";
 
@@ -25,7 +24,6 @@ const SignIn: React.FC = () => {
   const { login, isAuthenticated } = useAuthStore();
   const router = useRouter();
   const t = useTranslations('SignIn');
-  const localeActive = useLocale();
   const [formData, setFormData] = useState<FormData>({
     email: '',
     password: '',
@@ -93,7 +91,7 @@ const SignIn: React.FC = () => {
           <Button type="submit">{t('loginButton')}</Button>
         </form>
         <p className="mt-6 text-center text-sm text-gray-500">
-          {t('noAccount')} <Link href={`/${localeActive}/auth/singup`}>{t('signupLink')}</Link>.
+          {t('noAccount')} <Link href={`/auth/singup`}>{t('signupLink')}</Link>.
         </p>
       </div>
     </div>
