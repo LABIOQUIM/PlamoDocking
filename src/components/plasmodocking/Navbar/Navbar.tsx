@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import {  useTranslations } from 'next-intl';
 
 import { cn } from "@/lib/utils"
 import {
@@ -17,8 +17,11 @@ import {
 import { Button } from "@/components/ui/button"
 import renderItalic from '@/utils/renderItalic';
 import LocaleSwitcher from '../i18n/LocaleSwitcher';
+import { useAuthStore } from '@/store/auth-store';
 
 const ResponsiveAppBar: React.FC = () => {
+
+  const { isAuthenticated, logout } = useAuthStore();
 
   const t = useTranslations('Navbar');
 
@@ -77,7 +80,7 @@ const ResponsiveAppBar: React.FC = () => {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            {true &&
+            {isAuthenticated &&
               <>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger><em>{t('falciparum')}</em></NavigationMenuTrigger>
@@ -103,7 +106,7 @@ const ResponsiveAppBar: React.FC = () => {
                         <ListItem
                           key={component.title}
                           title={component.title}
-                          href={`/${component.href}`}
+                          href={`${component.href}`}
                           description={component.description}
                         />
                       ))}
@@ -125,17 +128,15 @@ const ResponsiveAppBar: React.FC = () => {
         </NavigationMenu>
         <LocaleSwitcher />
 
-        {false
+        {isAuthenticated
           ? <div className='bg-transparent border-2 border-blue-600 rounded-lg'>
             <Button
               variant="outline"
-              onClick={() => {
-
-              }}
+              onClick={() => logout()}
               className='text-base bg-transparent text-white'>{t('logout')}</Button>
           </div>
           : <>
-            <Link href={`/auth/singin`}>
+            <Link href={`/auth/login`}>
               <div className='bg-transparent border-2 border-blue-600 rounded-lg'>
                 <Button
                   variant="outline"

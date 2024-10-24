@@ -1,68 +1,103 @@
 'use client';
 
-import { useState } from 'react';
-import { useAuthStore } from '@/store/auth-store'; // Certifique-se de ajustar o caminho correto
+import Link from "next/link";
+import { useState, FormEvent, useEffect } from "react";
+import Input from "@/components/plasmodocking/Input/Input";
+import Button from "@/components/basics/Button/Button";
 import { useRouter } from 'next/navigation';
+import Alert from "@/components/plasmodocking/Alerts/Alert";
+import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { useAuthStore } from "@/store/auth-store";
+import { authenticateUser } from "@/api/auth";
 
-const LoginPage = () => {
-  const { login } = useAuthStore(); // Função para atualizar o estado de autenticação
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
+interface FormData {
+  email: string;
+  password: string;
+}
+
+interface AlertType {
+  type: 'success' | 'error';
+  message: string;
+}
+
+const SignIn: React.FC = () => {
+  const { login, isAuthenticated } = useAuthStore();
   const router = useRouter();
+  const t = useTranslations('SignIn');
+  const localeActive = useLocale();
+  const [formData, setFormData] = useState<FormData>({
+    email: '',
+    password: '',
+  });
+  const [alert, setAlert] = useState<AlertType | null>(null);
 
-  const handleLogin = async () => {
-    setError(null); // Limpa o erro ao tentar logar novamente
+  // Redirecionar automaticamente se já estiver logado
+  useEffect(() => {
+    if (isAuthenticated) router.replace('/');
+  }, [isAuthenticated, router]);
+
+  const handleFormEdit = (event: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    setFormData({
+      ...formData,
+      [name]: event.target.value,
+    });
+  };
+
+  const handleForm = async (event: FormEvent) => {
+    event.preventDefault();
 
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      // Faz a requisição de autenticação
+      const userData = await authenticateUser(formData.email, formData.password);
 
-      if (response.ok) {
-        const data = await response.json();
-        
-        // Supondo que a API retorne o nome e email do usuário ao logar
-        login({ email: data.email, name: data.name });
-        
-        // Redireciona para a página principal após o login
-        router.push('/plasmodocking/falciparum/withredocking');
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || 'Erro ao tentar logar');
-      }
+      // Se a autenticação for bem-sucedida, faz o login
+      login(userData.user, userData.access); 
+
+      // Redireciona para a página inicial ou dashboard
+      router.push('/');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
-      setError('Erro na comunicação com o servidor');
+    } catch (error) {
+      // Exibe um alerta em caso de erro
+      setAlert({
+        type: 'error',
+        message: 'Falha na autenticação. Verifique suas credenciais.',
+      });
     }
   };
 
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <button onClick={handleLogin}>Entrar</button>
+    <div className="bg-white flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          {t('title')}
+        </h2>
+        <form className="space-y-6" onSubmit={handleForm}>
+          <Input
+            name="email"
+            type="email"
+            required
+            placeholder={t('emailPlaceholder')}
+            value={formData.email}
+            onChange={(e) => { handleFormEdit(e, 'email') }}
+          />
+          <Input
+            name="password"
+            type="password"
+            required
+            placeholder={t('passwordPlaceholder')}
+            value={formData.password}
+            onChange={(e) => { handleFormEdit(e, 'password') }}
+          />
+          {alert && <Alert type={alert.type} message={alert.message} onClose={() => setAlert(null)} />}
+          <Button type="submit">{t('loginButton')}</Button>
+        </form>
+        <p className="mt-6 text-center text-sm text-gray-500">
+          {t('noAccount')} <Link href={`/${localeActive}/auth/singup`}>{t('signupLink')}</Link>.
+        </p>
+      </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignIn;

@@ -6,6 +6,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import Navbar from "@/components/plasmodocking/Navbar/Navbar";
 import { getUserLocale } from "@/services/locale";
+import Footer from "@/components/plasmodocking/Footer/Footer";
+import { ReactQueryProvider } from "@/components/plasmodocking/Provider/React_query_provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,12 +45,15 @@ export default async function RootLayout({
         suppressHydrationWarning={true}
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <div className="pt-16 bg-white min-h-screen">
-            {children}
-          </div>
-        </NextIntlClientProvider>
+        <ReactQueryProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Navbar />
+            <div className="pt-4 bg-white ">
+              {children}
+            </div>
+              {/* <Footer /> */}
+          </NextIntlClientProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );
