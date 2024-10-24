@@ -15,6 +15,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = 'primary-1', children, className, icon, iconPosition = 'left', iconSize = 20, iconColor = 'black', ...rest
 }, ref) => {
   function getVariant(variant: ButtonProps['variant']) {
+    // eslint-disable-next-line no-var
     var primaryDefaultConfigButton = "rounded-lg py-2.5 px-[12px] min-w-[120px] text-white text-xs font-montserrat font-semibold uppercase tracking-wider";
 
     switch (variant) {

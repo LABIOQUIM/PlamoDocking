@@ -6,7 +6,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import Navbar from "@/components/plasmodocking/Navbar/Navbar";
 import { getUserLocale } from "@/services/locale";
-import Footer from "@/components/plasmodocking/Footer/Footer";
 import { ReactQueryProvider } from "@/components/plasmodocking/Provider/React_query_provider";
 
 const geistSans = localFont({
