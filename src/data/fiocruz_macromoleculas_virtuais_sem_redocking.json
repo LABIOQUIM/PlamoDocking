@@ -1,0 +1,21 @@
+[
+    {
+      "nome": "Glutamate Dehydrogenase",
+      "rec": "2bma",
+      "gridsize": "64,51,51",
+      "gridcenter": "113.645,-4.700,30.657"
+    },
+    {
+      "nome": "CGMP-Dependent Protein Kinase",
+      "rec": "5dyk",
+      "gridsize": "63,45,36",
+      "gridcenter": "-10.320,-14.192,34.139"
+    },
+    {
+      "nome": "Lysyl-tRNA Synthetase",
+      "rec": "4h02",
+      "gridsize": "40,41,45",
+      "gridcenter": "23.862,-17.287,142.420"
+    }
+  ]
+  

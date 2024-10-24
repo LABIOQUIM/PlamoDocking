@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "44444:3000"
+    environment:
+      - NEXTAUTH_URL=http://localhost:44444/Plasmodocking/api/auth
+      - NEXTAUTH_SECRET="secredo"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+    profiles:
+      - development
+
+  web-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "44444:3000"
+    environment:
+      - NEXTAUTH_URL=https://your-production-url/Plasmodocking/api/auth
+      - NEXTAUTH_SECRET="production-secret"
+    command: npm start
+    profiles:
+      - production
