@@ -2,7 +2,6 @@
 import React, { useState, ChangeEvent, FormEvent} from "react";
 import Alert from '@/components/plasmodocking/Alerts/Alert';
 
-import api from '@/api/api';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/store/auth-store';
 import axios from "axios";
