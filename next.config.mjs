@@ -20,11 +20,11 @@ const nextConfig = {
       },
       {
         source: '/api/api_delete/:idItem',  // Rota do frontend para deletar item
-        destination: 'http://computacao.unir.br/Plasmodocking/back/api_delete/:idItem',
+        destination: 'http://computacao.unir.br/Plasmodocking/back/api_delete/:idItem/',
       },
       {
         source: '/api/get_resultado/:idFromUrl',  // Rota do frontend para obter resultado
-        destination: 'http://computacao.unir.br/Plasmodocking/back/get_resultado/:idFromUrl',
+        destination: 'http://computacao.unir.br/Plasmodocking/back/get_resultado/:idFromUrl/',
       },
       {
         source: '/api/process-plasmodocking/by-user',  // Rota do frontend para processar por usuário
@@ -32,7 +32,7 @@ const nextConfig = {
       },
       {
         source: '/api/api_download/:idItem',  // Rota do frontend para baixar item
-        destination: 'http://computacao.unir.br/Plasmodocking/back/api_download/:idItem',
+        destination: 'http://computacao.unir.br/Plasmodocking/back/api_download/:idItem/',
       },
     ];
   },
