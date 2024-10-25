@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
@@ -50,7 +51,8 @@ export default async function RootLayout({
             <div className="pt-4 bg-white ">
               {children}
             </div>
-              {/* <Footer /> */}
+            {/* <Footer /> */}
+            <Analytics />
           </NextIntlClientProvider>
         </ReactQueryProvider>
       </body>

@@ -6,7 +6,7 @@ import { useTransition } from 'react';
 import { CheckIcon } from '@radix-ui/react-icons';
 import { setUserLocale } from '@/services/locale';
 import { Locale } from '@/i18n/config';
-
+import { IoLanguageSharp } from "react-icons/io5";
 type Props = {
   defaultValue: string;
   items: Array<{ value: string; label: string }>;
@@ -38,7 +38,7 @@ export default function LocaleSwitcherSelect({
           )}
         >
           <Select.Icon>
-            <CheckIcon className="h-5 w-5 text-white" />
+            <IoLanguageSharp className="h-5 w-5 text-white" />
             {/* <LanguageIcon className="h-6 w-6 text-slate-600 transition-colors group-hover:text-slate-900" /> */}
           </Select.Icon>
         </Select.Trigger>
