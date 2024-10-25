@@ -13,12 +13,12 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineClockCircle, AiOut
 import { Button } from "@/components/ui/button"
 import { TrashIcon, DownloadIcon } from "@radix-ui/react-icons"
 import Link from 'next/link'
-import api from '@/api/api'
 import AtomComponent from '@/components/plasmodocking/atom/Atom'
 // import { useToast } from "@/components/ui/use-toast"
 import Alert from '@/components/plasmodocking/Alerts/Alert'
 import formatDate from '@/utils/formatDate'
 import { useAuthStore } from '@/store/auth-store'
+import axios from 'axios'
 
 export default function Result() {
     const { user } = useAuthStore();
@@ -63,7 +63,7 @@ export default function Result() {
     const handleAction = async (action: 'delete' | 'download', idItem: string) => {
         if (action === 'delete') {
             try {
-                const response = await api.delete(`/Plasmodocking/back/api_delete/${idItem}/`);
+                const response = await axios.delete(`/api/api_delete/${idItem}`);
                 if (response.status === 200) {
                     console.log('Arquivo apagado com sucesso!');
                     // toast({
@@ -79,7 +79,7 @@ export default function Result() {
             }
         } else if (action === 'download') {
             try {
-                const response = await api.get(`/Plasmodocking/back/api_download/${idItem}`, {
+                const response = await axios.get(`/api/api_download/${idItem}`, {
                     responseType: 'blob', // Indica que estamos esperando uma resposta binária (o arquivo zip)
                 });
 

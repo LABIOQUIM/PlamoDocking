@@ -5,6 +5,7 @@ import Alert from '@/components/plasmodocking/Alerts/Alert';
 import api from '@/api/api';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from '@/store/auth-store';
+import axios from "axios";
 
 interface FormData {
   nome: string;
@@ -66,7 +67,7 @@ export default function PlasmoDockigWithRedocking() {
     data.append('email_user', emailUser);
 
     try {
-      const response = await api.post('/Plasmodocking/back/process-plasmodocking/', data);
+      const response = await axios.post('/api/process-plasmodocking', data);
 
       if (response.status === 200 || response.status === 201) {
         showAlert('success', "Processo adicionado a fila com sucesso. em breve estará disponivel nos resultados.");

@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/api/api';
 import { PlasmodockingResult } from '@/types/PlasmodockingResult';
 import transformPlasmodockingResult from '@/utils/transformPlasmodockingResult';
+import axios from 'axios';
 
 const fetchPlasmodockingResult = async (idFromUrl: string): Promise<PlasmodockingResult> => {
-    const response = await api.get(`/Plasmodocking/back/get_resultado/${idFromUrl}/`);
+    const response = await axios.get(`/api/get_resultado/${idFromUrl}`);
     return transformPlasmodockingResult(response.data);
 };
 

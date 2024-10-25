@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import api from '@/api/api';
+import axios from 'axios';
 
 interface DataItem {
     nome: string;
@@ -21,7 +21,7 @@ const usePlasmodockingProcess = (userName: string) => {
     } = useQuery<DataItem[]>({
         queryKey: ["key"],
         queryFn: () => (
-            api.get(`/Plasmodocking/back/process-plasmodocking/by-user/?username=${userName}`)
+            axios.get(`/api/process-plasmodocking/by-user`, { params: { username: userName } })
                 .then(response => {
                     return response.data
                 })
