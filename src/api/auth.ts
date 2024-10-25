@@ -1,10 +1,10 @@
 // src/services/authService.ts
-import api from '@/api/api'; // Importa a instância de axios ou API
+import axios from 'axios';
 
 // Função para autenticar o usuário
 export const authenticateUser = async (email: string, password: string) => {
   try {
-    const response = await api.post('/api/authenticate', {  // Usar o proxy com a rota definida
+    const response = await axios.post('/api/authenticate', {  // Usar o proxy com a rota definida
       email,
       password,
     });
