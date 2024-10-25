@@ -13,7 +13,7 @@ export default function Home() {
   };
   
   return (
-    <main className="mt-10">
+    <main className="mt-24">
       <div className="text-center">
         <div className='w-1/2 mx-auto pt-2 border-t-2 border-indigo-900'>
           <p className="text-2xl font-semibold">
