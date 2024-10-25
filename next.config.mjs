@@ -28,7 +28,7 @@ const nextConfig = {
       },
       {
         source: '/api/process-plasmodocking/by-user',  // Rota do frontend para processar por usuário
-        destination: 'http://computacao.unir.br/Plasmodocking/back/process-plasmodocking/by-user',
+        destination: 'http://computacao.unir.br/Plasmodocking/back/process-plasmodocking/by-user/',
       },
       {
         source: '/api/api_download/:idItem',  // Rota do frontend para baixar item
