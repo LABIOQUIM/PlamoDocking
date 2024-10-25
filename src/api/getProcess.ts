@@ -21,10 +21,8 @@ const usePlasmodockingProcess = (userName: string) => {
     } = useQuery<DataItem[]>({
         queryKey: ["key"],
         queryFn: () => (
-            axios.get(`/api/process-plasmodocking/by-user`, { params: { username: userName } })
-                .then(response => {
-                    return response.data
-                })
+            axios.get(`/api/process-plasmodocking/by-user`, { params: { username: userName } }) // Passa username diretamente
+                .then(response => response.data)
         ),
         retry: 2,
     })
