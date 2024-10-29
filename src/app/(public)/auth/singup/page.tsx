@@ -4,8 +4,8 @@ import { useState, FormEvent } from "react";
 import { useTranslations, useLocale } from 'next-intl';
 import Input from "@/components/plasmodocking/Input/Input";
 import Button from "@/components/basics/Button/Button";
-import api from "@/api/api";
 import Alert from '@/components/plasmodocking/Alerts/Alert';
+import axios from "axios";
 
 
 interface AlertType {
@@ -53,7 +53,7 @@ const SignUp: React.FC = () => {
     }
 
     try {
-      const response = await api.post('/Plasmodocking/back/create-user/', formData);
+      const response = await axios.post('/api/create-user', formData);
 
       console.log('Usuário criado com sucesso!', response.data);
       showAlert('success', t('createUserSuccess'));
