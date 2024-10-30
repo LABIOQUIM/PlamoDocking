@@ -59,7 +59,7 @@ export default function PlasmoDockigWithoutRedocking() {
     data.append('email_user', emailUser)
 
     try {
-      const response = await axios.post('/back/process-plasmodocking/', data);
+      const response = await axios.post('/api/process-plasmodocking', data);
 
       if (response.status === 200 || response.status === 201) {
         showAlert('success', "Processo adicionado a fila com sucesso. em breve estará disponivel nos resultados.");
