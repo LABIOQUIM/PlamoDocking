@@ -28,8 +28,10 @@ const ResponsiveAppBar: React.FC = () => {
   const componentsVivax: { title: string; href: string; description: string }[] = [
     {
       title: renderItalic(t('plasmodium_vivax_with_redocking')),
-      href: `/plasmodocking/vivax/with-redocking`,
-      description: renderItalic(t('plasmodium_vivax_with_redocking_description')),
+      // href: `/plasmodocking/vivax/with-redocking`,
+      // description: renderItalic(t('plasmodium_vivax_with_redocking_description')),
+      href: "",
+      description: renderItalic(t('plasmodium_vivax_without_redocking_description')),
     },
     {
       title: renderItalic(t('plasmodium_vivax_without_redocking')),
