@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import { useState, FormEvent } from "react";
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations} from 'next-intl';
 import Input from "@/components/plasmodocking/Input/Input";
 import Button from "@/components/basics/Button/Button";
 import Alert from '@/components/plasmodocking/Alerts/Alert';
@@ -16,7 +16,6 @@ interface AlertType {
 
 const SignUp: React.FC = () => {
   const t = useTranslations('SignUp');
-  const localeActive = useLocale();
   const [alert, setAlert] = useState<AlertType | null>(null);
   const [formData, setFormData] = useState({
     name: '',
