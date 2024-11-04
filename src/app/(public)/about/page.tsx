@@ -1,4 +1,5 @@
 
+import Footer from '@/components/plasmodocking/Footer/Footer';
 import Team from '@/components/plasmodocking/team/Team';
 import { useTranslations } from 'next-intl';
 
@@ -41,6 +42,8 @@ export default function Home() {
           {t('contact_email')}
         </p>
       </div>
+      <Footer />
+
     </main>
   )
 }

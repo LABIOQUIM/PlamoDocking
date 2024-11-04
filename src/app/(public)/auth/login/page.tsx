@@ -9,6 +9,7 @@ import Alert from "@/components/plasmodocking/Alerts/Alert";
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from "@/store/auth-store";
 import { authenticateUser } from "@/api/auth";
+import Footer from "@/components/plasmodocking/Footer/Footer";
 
 interface FormData {
   email: string;
@@ -94,6 +95,9 @@ const SignIn: React.FC = () => {
           {t('noAccount')} <Link href={`/auth/singup`}>{t('signupLink')}</Link>.
         </p>
       </div>
+      
+      <Footer />
+
     </div>
   );
 };

@@ -10,6 +10,7 @@ import formatDate from '@/utils/formatDate';
 import Alert from '@/components/plasmodocking/Alerts/Alert';
 import AtomComponent from '@/components/plasmodocking/atom/Atom';
 import { useAuthStore } from '@/store/auth-store';
+import Footer from '@/components/plasmodocking/Footer/Footer';
 
 export default function Dashboard() {
   const {  user } = useAuthStore();
@@ -60,7 +61,7 @@ export default function Dashboard() {
     console.log(receptorData);
 
     return (
-        <div className='p-4 bg-gray-100'>
+        <div className='p-4 bg-gray-100 mt-12'>
             <div className="pt-4">
                 {/* Cabeçalho/Barra de informações com username e nameProcess */}
                 <div className="flex justify-between items-center bg-white border p-4 rounded-lg">
@@ -87,6 +88,8 @@ export default function Dashboard() {
                     />
                 </div>
             </div>
+      <Footer />
+
         </div>
     );
 }

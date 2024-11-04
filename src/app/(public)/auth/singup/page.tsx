@@ -6,6 +6,7 @@ import Input from "@/components/plasmodocking/Input/Input";
 import Button from "@/components/basics/Button/Button";
 import Alert from '@/components/plasmodocking/Alerts/Alert';
 import axios from "axios";
+import Footer from "@/components/plasmodocking/Footer/Footer";
 
 
 interface AlertType {
@@ -145,9 +146,11 @@ const SignUp: React.FC = () => {
         </form>
 
         <p className="mt-6 text-center text-sm text-gray-500">
-          <Link href={`/${localeActive}/auth/singin`}>{t('loginLink')}</Link>
+          <Link href={`/auth/login`}>{t('loginLink')}</Link>
         </p>
       </div>
+      <Footer />
+
     </div>
   );
 };

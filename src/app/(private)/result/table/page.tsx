@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthStore } from '@/store/auth-store';
 import axios from 'axios';
+import Footer from '@/components/plasmodocking/Footer/Footer';
 
 interface ResultadoFinalItem {
   receptor_name: string;
@@ -51,7 +52,7 @@ export default function Table() {
 
   return (
     <div className="">
-      <div className='px-10 bg-white w-auto mx-16  lg:h-[80vh] overflow-y-scroll border p-4 rounded-lg'>
+      <div className='px-10 mt-16 bg-white w-auto mx-16  lg:h-[80vh] overflow-y-scroll border p-4 rounded-lg'>
         {resultadoFinal &&
           <div className=''>
             {resultadoFinal.map((item, index) => (
@@ -89,6 +90,8 @@ export default function Table() {
           </div>
         }
       </div>
+      <Footer />
+
     </div>
   );
 }

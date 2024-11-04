@@ -9,6 +9,7 @@ import { BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import { useTranslations } from 'next-intl';
 import renderItalic from '@/utils/renderItalic';
+import Footer from '@/components/plasmodocking/Footer/Footer';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -265,6 +266,7 @@ export default function Home() {
           content={tableContentSemRedocking}
         />
       </section>
+      <Footer />
     </main>
   );
 }

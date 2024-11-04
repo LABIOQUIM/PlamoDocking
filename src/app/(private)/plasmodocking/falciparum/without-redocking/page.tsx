@@ -4,6 +4,7 @@ import Alert from '@/components/plasmodocking/Alerts/Alert';
 import { useTranslations } from 'next-intl';
 import { useAuthStore } from "@/store/auth-store";
 import axios from "axios";
+import Footer from "@/components/plasmodocking/Footer/Footer";
 
 interface FormData {
   nome: string;
@@ -161,6 +162,8 @@ export default function PlasmoDockigWithoutRedocking() {
         )}
         {isLoading ? <div className="loader my-10" id="loader"></div> : <></>}
       </div>
+      <Footer />
+
     </div>
   );
 }
