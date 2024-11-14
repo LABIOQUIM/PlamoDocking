@@ -47,10 +47,10 @@ const Team: React.FC = () => {
                         {t('description')}
                     </p>
                 </div>
-                <div className="mt-12">
+                <div className="mt-12 ">
                     <ul className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
                         {team.map((item, idx) => (
-                            <li key={idx}>
+                            <li key={idx} className=' shadow-lg rounded-md p-4'>
                                 <div className="w-24 h-24 mx-auto relative">
                                     <Image
                                         src={item.avatar}

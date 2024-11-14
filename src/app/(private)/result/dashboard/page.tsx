@@ -13,8 +13,8 @@ import { useAuthStore } from '@/store/auth-store';
 import Footer from '@/components/plasmodocking/Footer/Footer';
 
 export default function Dashboard() {
-  const {  user } = useAuthStore();
-  
+    const { user } = useAuthStore();
+
     const urlParams = new URLSearchParams(window.location.search);
     const idFromUrl = urlParams.get('id');
     const { isLoading, isError, data } = usePlasmodockingResult(idFromUrl as string);
@@ -34,17 +34,17 @@ export default function Dashboard() {
     if (isLoading) {
         return (
             <div className='flex flex-col justify-center items-center min-h-[40vh]'>
-            <Alert type="success" message={t('search')} btnClose={false} />
-            <AtomComponent />
-        </div>
+                <Alert type="success" message={t('search')} btnClose={false} />
+                <AtomComponent />
+            </div>
         );
     }
 
     if (isError) {
         return (
             <div className='flex flex-col justify-center items-center min-h-[40vh]'>
-            <Alert type="error" message={t('search_error')} btnClose={false} />
-        </div>
+                <Alert type="error" message={t('search_error')} btnClose={false} />
+            </div>
         )
     }
 
@@ -58,7 +58,12 @@ export default function Dashboard() {
     const liganteEnergias = receptorData?.ligantes.map(ligante => parseFloat(ligante.ligante_energia)) || [];
     const energiaRedocking = receptorData ? parseFloat(receptorData.energia_original) : undefined;
 
+    console.log('====================================1');
+    console.log(energiaRedocking);
     console.log(receptorData);
+    console.log(receptorData?.energia_original);
+    console.log('====================================2');
+
 
     return (
         <div className='p-4 bg-gray-100 mt-12'>
@@ -74,21 +79,21 @@ export default function Dashboard() {
                 <TopCards recOptions={data?.dados.resultado_final} rec={selectedReceptor} change={handleSelectChange} receptorData={receptorData} />
 
                 <div className='flex bg-transparent gap-4'>
-                    <BarChart 
-                        key={selectedReceptor} 
-                        liganteNames={liganteNames} 
-                        liganteEnergias={liganteEnergias} 
-                        energiaRedocking={energiaRedocking} 
+                    <BarChart
+                        key={selectedReceptor}
+                        liganteNames={liganteNames}
+                        liganteEnergias={liganteEnergias}
+                        energiaRedocking={energiaRedocking}
                     />
-                    <TabelaLigantes 
-                        user={user?.username} 
-                        name_process={data?.dados.nome} 
-                        macromolecula={selectedReceptor} 
-                        ligantes={receptorData?.ligantes} 
+                    <TabelaLigantes
+                        user={user?.username}
+                        name_process={data?.dados.nome}
+                        macromolecula={selectedReceptor}
+                        ligantes={receptorData?.ligantes}
                     />
                 </div>
             </div>
-      <Footer />
+            <Footer />
 
         </div>
     );

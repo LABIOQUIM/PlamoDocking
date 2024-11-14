@@ -1,44 +1,50 @@
-// components/Footer.tsx
 import * as React from 'react';
 import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer bg-white flex mt-20 min-h-[200px] p-2 border-t-2 border-x-orange-900">
-      <div className="mx-auto h-16 w-auto">
+    <footer className="bg-white flex flex-col md:flex-row items-center justify-around mt-10 p-4 border-t-2 border-orange-900">
+      {/* Logo UNIR */}
+      <div className="flex items-center justify-center mb-4 md:mb-0">
         <Image
-          className='w-auto'
           src="/logos/unir.jpeg"
-          alt="Your Company"
-          width={180}  // Defina a largura conforme necessário
-          height={180} // Defina a altura conforme necessário
+          alt="UNIR"
+          width={150}
+          height={150}
+          className="w-28 h-auto md:w-36"
         />
       </div>
-      <div className="mx-auto h-16 w-auto">
+
+      {/* Logo LABIOQUIM */}
+      <div className="flex items-center justify-center mb-4 md:mb-0">
         <Image
-          className='w-auto'
           src="/logos/labioquim.png"
-          alt="Your Company"
+          alt="LABIOQUIM"
+          width={150}
+          height={150}
+          className="w-28 h-auto md:w-36"
+        />
+      </div>
+
+      {/* Logo FIOCRUZ */}
+      <div className="flex items-center justify-center mb-4 md:mb-0">
+        <Image
+          src="/logos/fiocruz.png"
+          alt="FIOCRUZ"
           width={180}
           height={180}
+          className="w-32 h-auto md:w-40"
         />
       </div>
-      <div className="mx-auto mt-2 h-16 w-auto">
+
+      {/* Logo FIOCRUZ RO */}
+      <div className="flex items-center justify-center mb-4 md:mb-0">
         <Image
-          className='w-auto'
-          src="/logos/fiocruz.png"
-          alt="Your Company"
-          width={200}
-          height={200}
-        />
-      </div>
-      <div className="mx-auto mt-2 h-16 w-auto">
-        <Image
-          className='w-auto'
           src="/logos/fiocruzro.png"
-          alt="Your Company"
-          width={200}
-          height={200}
+          alt="FIOCRUZ RO"
+          width={180}
+          height={180}
+          className="w-32 h-auto md:w-40"
         />
       </div>
     </footer>

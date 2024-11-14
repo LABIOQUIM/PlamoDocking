@@ -65,71 +65,76 @@ export default function Home() {
 
   return (
     <main className="w-full justify-center items-center content-center">
-      <section className="w-full py-8 md:py-16 lg:py-24 bg-white">
-        <div className="container grid items-center justify-center gap-8 px-4 md:px-6 lg:grid-cols-2 lg:gap-12 mx-auto">
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl" dangerouslySetInnerHTML={{ __html: renderItalic(t('title')) || '' }}>
-               
-              </h2>
-              <div className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+      <section className="w-full py-8 md:py-16 lg:py-24 bg-white mt-12">
+        <div className="container mx-auto grid gap-8 px-4 md:px-6 lg:grid-cols-2 lg:gap-12 items-start">
+          {/* Coluna de texto */}
+          <div className="space-y-6 lg:space-y-4">
+            <div className="space-y-4">
+              <h2
+                className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl"
+                dangerouslySetInnerHTML={{ __html: renderItalic(t('title')) || '' }}
+              />
+              <div className="text-gray-600 text-sm sm:text-base md:text-lg dark:text-gray-400">
                 {renderItalic(t('description'))}
               </div>
             </div>
+
+            {/* Informações adicionais */}
             <div className="grid gap-4">
-              <div className="rounded-lg bg-white p-4 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">{t('advantages')}</h3>
-                </div>
-                <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <h3 className="text-base font-semibold">{t('advantages')}</h3>
+                <p className="text-sm mt-2 text-gray-600 dark:text-gray-400">
                   {renderItalic(t('advantages_description'))}
-                </div>
+                </p>
               </div>
-              <div className="rounded-lg bg-white p-4 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">{t('techniques')}</h3>
-                </div>
-                <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <h3 className="text-base font-semibold">{t('techniques')}</h3>
+                <p className="text-sm mt-2 text-gray-600 dark:text-gray-400">
                   {renderItalic(t('techniques_description'))}
-                </div>
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-lg bg-white p-4 shadow-sm">
-            <div className="flex justify-center flex-col">
+          {/* Imagem e fonte */}
+          <div className="bg-white rounded-lg p-4 shadow-sm">
+            <div className="flex flex-col items-center">
               <Image
                 src="/imagens/autoDock.png"
-                alt="Your Company"
-                width={800}
-                height={800}
+                alt="AutoDock"
+                width={400}
+                height={400}
+                className="rounded-lg w-full h-auto"
               />
-              <div className="m-0 mt-6 text-sm opacity-50">
+              <div className="mt-6 text-xs sm:text-sm opacity-70">
                 <span>{t('source')}</span>
                 <div className="ml-4">
-                  {"SANTOS-MARTINS, Diogo et al. Accelerating AutoDock4 with GPUs and gradient-based local search. Journal of chemical theory and computation, v. 17, n. 2, p. 1060-1073, 2021."}
+                  SANTOS-MARTINS, Diogo et al. Accelerating AutoDock4 with GPUs and gradient-based local search. Journal of chemical theory and computation, v. 17, n. 2, p. 1060-1073, 2021.
                 </div>
-
                 <div className="ml-4 mt-4">
                   <span>{t('manual')}</span>
                   <Link
                     href="https://autodock.scripps.edu/wp-content/uploads/sites/56/2021/10/AutoDock4.2.6_UserGuide.pdf"
-                    className="group text-blue-700 rounded-lg border border-transparent py-2 transition-colors"
+                    className="text-blue-600 underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    https://autodock.scripps.edu/wp-content/uploads/sites/56/2021/10/AutoDock4.2.6_UserGuide.pdf
+                    User Guide
                   </Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-start">
+
+          {/* Fórmulas */}
+          <div className="flex flex-col items-start space-y-4 overflow-x-scroll md:overflow-visible">
             <h3 className="text-lg font-semibold">{t('formulas_title')}</h3>
             <BlockMath math={latex} />
             <BlockMath math={equation} />
           </div>
         </div>
+
         <hr className="my-8" />
 
         <div className="space-y-2 w-[80%] mx-auto mt-20">
@@ -184,7 +189,7 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold">{t('drug_candidates')}</h3>
                 </div>
-                <div className="mt-2 text-sm text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: renderItalic(t('drug_candidates_description')) || '' }}/>
+                <div className="mt-2 text-sm text-gray-500 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: renderItalic(t('drug_candidates_description')) || '' }} />
               </div>
             </div>
           </div>
@@ -194,7 +199,7 @@ export default function Home() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-3xl md:text-4xl">
               {renderItalic(t('target_preparation_title'))}
             </h2>
-            <div className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400" dangerouslySetInnerHTML={{ __html: renderItalic(t('target_preparation_description')) || '' }}/>
+            <div className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400" dangerouslySetInnerHTML={{ __html: renderItalic(t('target_preparation_description')) || '' }} />
           </div>
 
           <div className="grid gap-4">
@@ -209,7 +214,7 @@ export default function Home() {
             <div className="lg:grid-cols-2 grid space-x-2">
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <div className="flex items-center justify-center">
-                  <h3 className="text-lg font-semibold" dangerouslySetInnerHTML={{ __html: renderItalic(t('targets_falciparum')) || '' }}/>
+                  <h3 className="text-lg font-semibold" dangerouslySetInnerHTML={{ __html: renderItalic(t('targets_falciparum')) || '' }} />
                 </div>
                 <div className="grid gap-4 lg:grid-cols-2 mt-2">
                   <div className="hover:bg-gray-100 cursor-pointer rounded-lg shadow-sm" onClick={() => setIsModalOpen(true)}>
@@ -229,7 +234,7 @@ export default function Home() {
 
               <div className="rounded-lg bg-white p-4 shadow-sm">
                 <div className="flex items-center justify-center">
-                  <h3 className="text-lg font-semibold" dangerouslySetInnerHTML={{ __html: renderItalic(t('targets_vivax')) || '' }}/>
+                  <h3 className="text-lg font-semibold" dangerouslySetInnerHTML={{ __html: renderItalic(t('targets_vivax')) || '' }} />
                 </div>
                 <div className="grid gap-4 lg:grid-cols-2 mt-2">
                   <div className="hover:bg-gray-100 cursor-pointer rounded-lg shadow-sm">
